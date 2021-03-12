@@ -16,6 +16,7 @@
   <!-- Base link description -->
   <!-- Differently from the sdf standard, the arguments are usually quoted -->
   <link name = "base_link">
+
 	<visual>
 	  <origin xyz = "0 0 0" rpy = "0 0 0 " />
 	  <geometry>
@@ -24,10 +25,17 @@
 	  <material name="blue"/>
 	</visual>
 
+	<!-- Chassis collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <geometry>
+		<box size="0.5 0.5 0.25"/>
+	  </geometry>
+	</collision>
+
 	<!-- Caster -->
 	<!-- The caster is inside of the base link. I couldn't create it a link because
 		 it would need a joint to attach it to the base link -->
-
 	<visual name="caster">
 	  <origin xyz="0.2 0 -0.125" rpy="0 0 0"/>
 	  <geometry>
@@ -35,6 +43,14 @@
 	  </geometry>
 	  <material name="blue"/>
 	</visual>
+
+	<!-- Caster collision -->
+	<collision>
+	  <origin xyz="0.2 0 -0.125" rpy="0 0 0"/>
+	  <geometry>
+		<sphere radius="0.05"/>
+	  </geometry>
+	</collision>
 	
   </link>
 
@@ -47,6 +63,15 @@
 	  </geometry>
 	  <material name="black"/>
 	</visual>
+
+	<!-- Right wheel collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
+	  <geometry>
+		<cylinder length="0.1" radius="0.2"/>
+	  </geometry>
+	</collision>
+
   </link>
 	
   <!-- The joint origin is defined in regards to the base_link reference (in this case, "0 0 0");
@@ -73,6 +98,15 @@
 	  </geometry>
 	  <material name="black"/>
 	</visual>
+
+	<!-- Left wheel collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
+	  <geometry>
+		<cylinder length="0.1" radius="0.2"/>
+	  </geometry>
+	</collision>
+
   </link>
 
   <joint name="joint_left_wheel" type="continuous">
