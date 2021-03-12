@@ -1,0 +1,15 @@
+<?xml version = "1.0"?>
+<robot name = "dd_robot">
+
+  <! -- Base link description -->
+  <! -- Differently from the sdf standard, the arguments are usually quoted -->
+  <link name = "dd_robot">
+	<visual>
+	  <origin xyz = "0 0 0" rpy = "0 0 0 " />
+	  <geometry>
+		<box size = "0.5 0.5 0.25" />
+	  </geometry>
+	</visual>
+  </link>
+
+</robot>
