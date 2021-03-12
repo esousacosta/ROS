@@ -123,4 +123,16 @@
 	<axis xyz="0 1 0"/>
   </joint>
 
+  <gazebo reference="base_link">
+	<material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+	<material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="right_wheel">
+	<material>Gazebo/Black</material>
+  </gazebo>
+
 </robot>
