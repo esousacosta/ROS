@@ -33,6 +33,13 @@
 	  </geometry>
 	</collision>
 
+	<!-- Inertial properties of the chassis -->
+	<inertial>
+	  <mass value="5"/>
+	  <inertia ixx="0.13" ixy="0.0" ixz="0.0"
+			   iyy="0.21" iyz="0.0" izz="0.13"/>
+	</inertial>
+
 	<!-- Caster -->
 	<!-- The caster is inside of the base link. I couldn't create it a link because
 		 it would need a joint to attach it to the base link -->
