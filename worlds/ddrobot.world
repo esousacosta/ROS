@@ -9,12 +9,12 @@
     </include>
     <include>
       <uri>model://construction_cone</uri>
-      <name>construction_cone</name>
+      <name>left_construction_cone</name>
       <pose>-3.0 0 0 0 0 0</pose>
     </include>
     <include>
       <uri>model://construction_cone</uri>
-      <name>construction_cone</name>
+      <name>right_construction_cone</name>
       <pose>3.0 0 0 0 0 0</pose>
     </include>
   </world>

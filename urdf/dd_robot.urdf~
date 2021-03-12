@@ -1,15 +1,138 @@
 <?xml version = "1.0"?>
 <robot name = "dd_robot">
 
-  <! -- Base link description -->
-  <! -- Differently from the sdf standard, the arguments are usually quoted -->
-  <link name = "dd_robot">
+  <material name="blue">
+	<color rgba="0.0 0.5 1.0 1.0"/>
+  </material>
+
+  <material name="white">
+	<color rgba="1.0 1.0 1.0 1.0"/>
+  </material>
+
+  <material name="black">
+	<color rgba="0.05 0.05 0.05 1.0"/>
+  </material>
+
+  <!-- Base link description -->
+  <!-- Differently from the sdf standard, the arguments are usually quoted -->
+  <link name = "base_link">
+
 	<visual>
 	  <origin xyz = "0 0 0" rpy = "0 0 0 " />
 	  <geometry>
 		<box size = "0.5 0.5 0.25" />
 	  </geometry>
+	  <material name="blue"/>
 	</visual>
+
+	<!-- Chassis collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <geometry>
+		<box size="0.5 0.5 0.25"/>
+	  </geometry>
+	</collision>
+
+	<!-- Inertial properties of the chassis -->
+	<inertial>
+	  <mass value="5"/>
+	  <inertia ixx="0.13" ixy="0.0" ixz="0.0"
+			   iyy="0.21" iyz="0.0" izz="0.13"/>
+	</inertial>
+
+	<!-- Caster -->
+	<!-- The caster is inside of the base link. I couldn't create it a link because
+		 it would need a joint to attach it to the base link -->
+	<visual name="caster">
+	  <origin xyz="0.2 0 -0.125" rpy="0 0 0"/>
+	  <geometry>
+		<sphere radius="0.05"/>
+	  </geometry>
+	  <material name="blue"/>
+	</visual>
+
+	<!-- Caster collision -->
+	<collision>
+	  <origin xyz="0.2 0 -0.125" rpy="0 0 0"/>
+	  <geometry>
+		<sphere radius="0.05"/>
+	  </geometry>
+	</collision>
+	
   </link>
+
+  <!-- Right wheel -->
+  <link name="right_wheel">
+	<visual>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0" />
+	  <geometry>
+		<cylinder length="0.1" radius="0.2" />
+	  </geometry>
+	  <material name="black"/>
+	</visual>
+
+	<!-- Right wheel collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
+	  <geometry>
+		<cylinder length="0.1" radius="0.2"/>
+	  </geometry>
+	</collision>
+
+  </link>
+	
+  <!-- The joint origin is defined in regards to the base_link reference (in this case, "0 0 0");
+		hence, the origin of the wheel attached to it indicates, from the origin of the join, where
+		the wheel will be drawn. To check this out, change the wheel's origin to 0.3 and leave the 
+		joint origin as is.-->
+
+  <joint name="joint_right_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="right_wheel"/>
+	<origin xyz="0 -0.30 0" rpy="0 0 0" />
+	<axis xyz="0 1 0"/>
+  </joint>
+
+  <!-- left wheel -->
+  <!-- The origin of the wheel needs to be the same as the one for the base link
+		for easier desiging of the robot -->
+
+  <link name="left_wheel">
+	<visual>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0" />
+	  <geometry>
+		<cylinder length="0.1" radius="0.2" />
+	  </geometry>
+	  <material name="black"/>
+	</visual>
+
+	<!-- Left wheel collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
+	  <geometry>
+		<cylinder length="0.1" radius="0.2"/>
+	  </geometry>
+	</collision>
+
+  </link>
+
+  <joint name="joint_left_wheel" type="continuous">
+	<parent link="base_link"/>
+	<child link="left_wheel"/>
+	<origin xyz="0 0.30 0" rpy="0 0 0" />
+	<axis xyz="0 1 0"/>
+  </joint>
+
+  <gazebo reference="base_link">
+	<material>Gazebo/Blue</material>
+  </gazebo>
+
+  <gazebo reference="left_wheel">
+	<material>Gazebo/Black</material>
+  </gazebo>
+
+  <gazebo reference="right_wheel">
+	<material>Gazebo/Black</material>
+  </gazebo>
 
 </robot>
