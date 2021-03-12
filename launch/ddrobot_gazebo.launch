@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<launch>
+  <!-- Same logic used  in the  empty_world is applied here -->
+  <include file="$(find gazebo_ros)/launch/empty_world.launch">
+	<arg name="world_name"
+		 value="$(find ros_robotics)/worlds/ddrobot.world"/>
+
+	<arg name="paused" default="false"/>
+	<arg name="use_sim_time" default="true"/>
+	<arg name="gui" default="true"/>
+	<arg name="headless" default="false"/>
+	<arg name="debug" default="false"/>
+  </include>
+
+  <!-- Spawn the dd_robot into  gazebo -->
+  <nome name="spawn_urdf" pkg="gazebo_ros"
+		type="spawn_model" output="screen"
+		args="-file $(find ros_robotics)/urdf/dd_robot.gazebo
+				-urdf -model ddrobot" />
+</launch>
