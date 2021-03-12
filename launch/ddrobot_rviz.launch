@@ -16,7 +16,6 @@
   <node name = "joint_state_publisher"
 		pkg = "joint_state_publisher"
 		type = "joint_state_publisher" />
-  <!-- 		output = "screen" unless = "$(arg gui)" /> -->
 
   <!-- The current ROS version has split the joint_state_publisher from its GUI, so
   		this separation is also needed here -->
