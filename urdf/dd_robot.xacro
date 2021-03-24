@@ -4,6 +4,7 @@
 
   <xacro:include filename="$(find ros_robotics)/urdf/materials.xacro" />
   <xacro:include filename="$(find ros_robotics)/urdf/gazebo.xacro" />
+  <xacro:include filename="$(find ros_robotics)/urdf/macros.xacro" />
   
   <!-- Base link description -->
   <!-- Differently from the sdf standard, the arguments are usually quoted -->
@@ -60,32 +61,8 @@
   </link>
 
   <!-- Right wheel -->
-  <link name="right_wheel">
-	<visual>
-	  <origin xyz="0 0 0" rpy="1.570795 0 0" />
-	  <geometry>
-		<cylinder length="0.1" radius="0.2" />
-	  </geometry>
-	  <material name="black"/>
-	</visual>
-
-	<!-- Right wheel collision -->
-	<collision>
-	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
-	  <geometry>
-		<cylinder length="0.1" radius="0.2"/>
-	  </geometry>
-	</collision>
-
-	<!-- Right wheel inertial model -->
-	<inertial>
-	  <mass value="0.5"/>
-	  <inertia ixx="0.01" ixy="0.0" ixz="0.0"
-			   iyy="0.005" iyz="0.0" izz="0.005"/>
-	</inertial>
-
-  </link>
-	
+  <xacro:link_wheel name="right_wheel"/>
+  
   <!-- The joint origin is defined in regards to the base_link reference (in this case, "0 0 0");
 		hence, the origin of the wheel attached to it indicates, from the origin of the join, where
 		the wheel will be drawn. To check this out, change the wheel's origin to 0.3 and leave the 
@@ -98,35 +75,12 @@
 	<axis xyz="0 1 0"/>
   </joint>
 
+  <!-- Left wheel -->
+  <xacro:link_wheel name="left_wheel"/>
+
   <!-- left wheel -->
   <!-- The origin of the wheel needs to be the same as the one for the base link
 		for easier desiging of the robot -->
-
-  <link name="left_wheel">
-	<visual>
-	  <origin xyz="0 0 0" rpy="1.570795 0 0" />
-	  <geometry>
-		<cylinder length="0.1" radius="0.2" />
-	  </geometry>
-	  <material name="black"/>
-	</visual>
-
-	<!-- Left wheel collision -->
-	<collision>
-	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
-	  <geometry>
-		<cylinder length="0.1" radius="0.2"/>
-	  </geometry>
-	</collision>
-
-	<!-- Left wheel inertial model -->
-	<inertial>
-	  <mass value="0.5"/>
-	  <inertia ixx="0.01" ixy="0.0" ixz="0.0"
-			   iyy="0.005" iyz="0.0" izz="0.005"/>
-	</inertial>
-
-  </link>
 
   <joint name="joint_left_wheel" type="continuous">
 	<parent link="base_link"/>
