@@ -11,9 +11,15 @@
 	<arg name="debug" default="false"/>
   </include>
 
+  <param name="robot_description" command="$(find xacro)/xacro '$(find ros_robotics)/urdf/dd_robot.xacro'"/>
+
   <!-- Spawn the dd_robot into  gazebo -->
   <node name="spawn_urdf" pkg="gazebo_ros"
 		type="spawn_model" output="screen"
+		args="-urdf -param robot_description -model ddrobot" />
+		<!--
 		args="-file $(find ros_robotics)/urdf/dd_robot.gazebo
 				-urdf -model ddrobot" />
+		-->
+		
 </launch>
