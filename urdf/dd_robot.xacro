@@ -3,24 +3,8 @@
 <robot name = "dd_robot" xmlns:xacro="http://www.ros.org/wiki/xacro">
 
   <xacro:include filename="$(find ros_robotics)/urdf/materials.xacro" />
+  <xacro:include filename="$(find ros_robotics)/urdf/gazebo.xacro" />
   
-  <gazebo>
-	<plugin filename="libgazebo_ros_diff_drive.so" name="differential_drive_controller">
-	  <legacyMode>false</legacyMode>
-	  <alwaysOn>true</alwaysOn>
-	  <updateRate>20</updateRate>
-	  <leftJoint>joint_left_wheel</leftJoint>
-	  <rightJoint>joint_right_wheel</rightJoint>
-	  <wheelSeparation>0.2</wheelSeparation>
-	  <wheelDiameter>0.2</wheelDiameter>
-	  <torque>0.1</torque>
-	  <commandTopic>cmd_vel</commandTopic>
-	  <odometryTopic>odom</odometryTopic>
-	  <odometryFrame>odom</odometryFrame>
-	  <robotBaseFrame>base_link</robotBaseFrame>
-	</plugin>
-  </gazebo>
-
   <!-- Base link description -->
   <!-- Differently from the sdf standard, the arguments are usually quoted -->
   <link name = "base_link">
@@ -100,7 +84,6 @@
 			   iyy="0.005" iyz="0.0" izz="0.005"/>
 	</inertial>
 
-
   </link>
 	
   <!-- The joint origin is defined in regards to the base_link reference (in this case, "0 0 0");
@@ -151,18 +134,5 @@
 	<origin xyz="0 0.30 0.025" rpy="0 0 0" />
 	<axis xyz="0 1 0"/>
   </joint>
-
-  <gazebo reference="base_link">
-	<material>Gazebo/Blue</material>
-	<pose>0 0 0.3 0 0 0</pose>
-  </gazebo>
-
-  <gazebo reference="left_wheel">
-	<material>Gazebo/Black</material>
-  </gazebo>
-
-  <gazebo reference="right_wheel">
-	<material>Gazebo/Black</material>
-  </gazebo>
 
 </robot>

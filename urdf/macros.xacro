@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<robot>
+  <macro name="link_wheel" params="name">
+
+  <!-- Generic wheel -->
+  <link name="${name}">
+	<visual>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0" />
+	  <geometry>
+		<cylinder length="0.1" radius="0.2" />
+	  </geometry>
+	  <material name="black"/>
+	</visual>
+
+	<!-- Generic wheel collision -->
+	<collision>
+	  <origin xyz="0 0 0" rpy="1.570795 0 0"/>
+	  <geometry>
+		<cylinder length="0.1" radius="0.2"/>
+	  </geometry>
+	</collision>
+
+	<!-- Generic wheel inertial model -->
+	<inertial>
+	  <mass value="0.5"/>
+	  <inertia ixx="0.01" ixy="0.0" ixz="0.0"
+			   iyy="0.005" iyz="0.0" izz="0.005"/>
+	</inertial>
+  </link>
+	
+  </macro>
+</robot>
