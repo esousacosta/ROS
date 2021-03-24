@@ -46,4 +46,11 @@
 	  <axis xyz="0 1 0"/>
 	</joint>
   </xacro:macro>
+
+  <!-- https://en.wikipedia.org/wiki/List_of_moments_of_inertia#List_of_3D_inertia_tensors -->
+  <xacro:macro name="cylinder_inertia" params="mass r l">
+	<inertia ixx="${mass * (3 * r * r + l * l) / 12}" ixy="0.0" ixz="0.0"
+			 iyy="${mass * (3 * r * r + l * l) / 12}" iyz="0.0"
+			 izz="${mass *  (r * r) / 2}"/>
+  </xacro:macro>
 </robot>
