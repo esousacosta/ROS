@@ -1,5 +1,8 @@
 <?xml version="1.0"?>
 <robot xmlns:xacro="http://www.ros.org/wiki/xacro">
+
+  <!-- The origin of the wheel needs to be the same as the one for the base link
+		for easier desiging of the robot -->
   <xacro:macro name="link_wheel" params="name">
 	<!-- Generic wheel -->
 	<link name="${name}">
@@ -27,5 +30,20 @@
 	  </inertial>
 
 	</link>
+  </xacro:macro>
+
+  <!-- The joint origin is defined in regards to the base_link reference (in this case, "0 0 0");
+		hence, the origin of the wheel attached to it indicates, from the origin of the join, where
+		the wheel will be drawn. To check this out, change the wheel's origin to 0.3 and leave the 
+		joint origin as is.-->
+
+
+  <xacro:macro name="joint_wheel" params="name child x y z">
+	<joint name="${name}_joint_wheel" type="continuous">
+	  <parent link="base_link"/>
+	  <child link="${child}"/>
+	  <origin xyz="${x} ${y} ${z}" rpy="0 0 0" />
+	  <axis xyz="0 1 0"/>
+	</joint>
   </xacro:macro>
 </robot>
