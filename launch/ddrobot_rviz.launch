@@ -8,7 +8,8 @@
 
   <!-- Configuring the Parameter sever -->
   <param name = "robot_description"
-		 textfile = "$(find ros_robotics)/urdf/$(arg model)" />
+		 command = "$(find xacro)/xacro '$(find ros_robotics)/urdf/dd_robot.xacro'"/>
+		 <!-- textfile = "$(find ros_robotics)/urdf/$(arg model)" /> -->
   <param name = "use_gui" value = "$(arg gui)" />
 
   <!-- Initialization of 3 nodes: joint_state_publisher,
