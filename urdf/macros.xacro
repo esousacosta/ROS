@@ -25,8 +25,8 @@
 	  <!-- Generic wheel inertial model -->
 	  <inertial>
 		<mass value="0.5"/>
-		<inertia ixx="0.01" ixy="0.0" ixz="0.0"
-				 iyy="0.005" iyz="0.0" izz="0.005"/>
+		<inertia ixx="0.003" ixy="0.0" ixz="0.0"
+				 iyy="0.0056" iyz="0.0" izz="0.003"/>
 	  </inertial>
 
 	</link>
