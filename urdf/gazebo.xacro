@@ -35,6 +35,7 @@
   <gazebo reference="laser_scanner">
     <sensor type="gpu_ray" name="head_hokuyo_sensor">
       <pose>0 0 0 0 0 0</pose>
+	  <!-- This parameter controls wether we can see the laser or not -->
       <visualize>false</visualize>
       <update_rate>20</update_rate>
       <ray>
