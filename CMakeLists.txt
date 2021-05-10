@@ -10,6 +10,7 @@ project(ros_robotics)
 find_package(catkin REQUIRED COMPONENTS
   roscpp
   geometry_msgs
+  sensor_msgs
   tf
 )
 
@@ -71,6 +72,7 @@ find_package(catkin REQUIRED COMPONENTS
 generate_messages(
   DEPENDENCIES
   geometry_msgs  # Or other packages containing msgs
+  sensor_msgs
 )
 
 ################################################
@@ -207,7 +209,9 @@ ${catkin_INCLUDE_DIRS}
 
 add_executable(tf_broadcaster src/tf_broadcaster.cpp)
 add_executable(tf_listener src/tf_listener.cpp)
+add_executable(laser_listener src/laser_listener.cpp)
 target_link_libraries(tf_broadcaster ${catkin_LIBRARIES})
 target_link_libraries(tf_listener ${catkin_LIBRARIES})
+target_link_libraries(laser_listener ${catkin_LIBRARIES})
 
 
