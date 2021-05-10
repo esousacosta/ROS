@@ -4,8 +4,16 @@
 
 void laserCallback(const sensor_msgs::LaserScan::ConstPtr& incoming_scan)
 {
+  // The initial angle is -pi (pointing to the back of the robot),
+  // and the final angle is pi (pointing in the same direction, but after
+  // having swept all around the robot in a counter-clockwise movement.
+  auto angle = -3.14;
+  auto angle_increment = incoming_scan->angle_increment;
+  int ind = 0;
+
   for (auto& element: incoming_scan->ranges) {
-	ROS_INFO("Received data: %.2f", element);
+	ROS_INFO("Received data: [dist., angle] = [%.2f, %.2f]", element, angle + angle_increment * ind);
+	ind++;
   }
 }
 
