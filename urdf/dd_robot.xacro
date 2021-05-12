@@ -13,33 +13,34 @@
 	<visual>
 	  <origin xyz = "0 0 0" rpy = "0 0 0 " />
 	  <geometry>
-		<box size = "0.8 0.5 0.25" />
+		<box size = ".4 .2 .1" />
 	  </geometry>
 	  <material name="blue"/>
 	</visual>
 
 	<!-- Chassis collision -->
 	<collision>
-	  <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <!-- <origin xyz="0 0 0" rpy="0 0 0"/> -->
 	  <geometry>
-		<box size="0.8 0.5 0.25"/>
+		<box size=".4 .2 .1"/>
 	  </geometry>
 	</collision>
 
 	<!-- Inertial properties of the chassis -->
 	<inertial>
-	  <mass value="5"/>
-	  <inertia ixx="0.13" ixy="0.0" ixz="0.0"
-	  		   iyy="0.29" iyz="0.0" izz="0.371"/>
+	  <mass value="10"/>
+	  <origin xyz="0.0 0 0.1" rpy = "0 0 0" />
 	  <!-- <inertia ixx="0.13" ixy="0.0" ixz="0.0" -->
-	  <!-- 		   iyy="0.13" iyz="0.0" izz="0.208"/> -->
+	  <!-- 		   iyy="0.29" iyz="0.0" izz="0.371"/> -->
+	  <inertia ixx = "0.042" ixy = "0.0" ixz = "0.0"
+	  		   iyy = "0.142" iyz = "0.0" izz = "0.167"/>
 	</inertial>
 
 	<!-- Front Caster -->
 	<!-- The caster is inside of the base link. I couldn't create it a link because
 		 it would need a joint to attach it to the base link -->
 	<visual name="caster">
-	  <origin xyz="0.35 0 -0.125" rpy="0 0 0"/>
+	  <origin xyz=".15 0 -0.05" rpy="0 0 0"/>
 	  <geometry>
 		<sphere radius="0.05"/>
 	  </geometry>
@@ -47,11 +48,21 @@
 	</visual>
 
 	<!-- Caster collision -->
-	<collision>
-	  <origin xyz="0.35 0 -0.125" rpy="0 0 0"/>
+	<collision name='caster_collision'>
+	  <origin xyz="0.15 0 -0.05" rpy="0 0 0"/>
 	  <geometry>
 		<sphere radius="0.05"/>
 	  </geometry>
+	  <surface>
+		<friction>
+		  <ode>
+			<mu>0</mu>
+			<mu2>0</mu2>
+			<slip1>1.0</slip1>
+			<slip2>1.0</slip2>
+		  </ode>
+		</friction>
+	  </surface>
 	</collision>
 	
 	<inertial>
