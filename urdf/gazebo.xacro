@@ -7,10 +7,14 @@
   </gazebo>
 
   <gazebo reference="left_wheel">
-	<material>Gazebo/Black</material>
+	<material>Gazebo/White</material>
   </gazebo>
 
   <gazebo reference="right_wheel">
+	<material>Gazebo/White</material>
+  </gazebo>
+
+  <gazebo reference="laser_scanner">
 	<material>Gazebo/Black</material>
   </gazebo>
 
