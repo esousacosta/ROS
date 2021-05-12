@@ -86,7 +86,7 @@
 	<inertial>
 	  <origin xyz="0 0 0" rpy="0 0 0"/>
 	  <mass value="0.5"/>
-	  <xacro:cylinder_inertia mass="0.5" r="0.1" l="0.2"/>
+	  <xacro:cylinder_inertia_z_axis mass="0.5" r="0.1" l="0.1"/>
 	</inertial>
 
 	<collision>
@@ -100,16 +100,16 @@
   <joint name="laser_scanner_joint" type="continuous">
 	<parent link="base_link"/>
 	<child link="laser_scanner"/>
-	<origin xyz="0.1 0 0.175" rpy="0 0 0"/>
+	<origin xyz="0.0 0.0 0.175" rpy="0 0 0"/>
 	<axis xyz="0 0 1"/>
   </joint>
 
   <!-- Right wheel -->
   <xacro:link_wheel name="right_wheel"/>
-  <xacro:joint_wheel name="right" child="right_wheel" x="-0.35" y="-0.30" z="-0.025"/>
+  <xacro:joint_wheel name="right" child="right_wheel" x="-0.1" y="-0.15" z="0.0"/>
   
   <!-- Left wheel -->
   <xacro:link_wheel name="left_wheel"/>
-  <xacro:joint_wheel name="left" child="left_wheel" x="-0.35" y="0.30" z="-0.025"/>
+  <xacro:joint_wheel name="left" child="left_wheel" x="-0.1" y="0.15" z="0.0"/>
 
 </robot>
