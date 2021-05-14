@@ -13,4 +13,8 @@
 	<color rgba="0.05 0.05 0.05 1.0"/>
   </material>
 
+  <material name="green">
+	<color rgba="0.05 1.0 0.05"/>
+  </material>
+
 </robot>

@@ -5,6 +5,9 @@
   <xacro:include filename="$(find ros_robotics)/urdf/materials.xacro" />
   <xacro:include filename="$(find ros_robotics)/urdf/gazebo.xacro" />
   <xacro:include filename="$(find ros_robotics)/urdf/macros.xacro" />
+
+  <xacro:property name="cameraSize" value="0.05"/>
+  <xacro:property name="cameraMass" value="0.1"/>
   
   <!-- Base link description -->
   <!-- Differently from the sdf standard, the arguments are usually quoted -->
@@ -73,6 +76,14 @@
 
   </link>
 
+  <link name="camera">
+	<visual>
+	  <origin xyz="0 0 0" rpy="0 0 0"/>
+	  <geometry>
+		<box size="${cameraSize} ${cameraSize} ${cameraSize}"/>
+	  </geometry>
+	  <material name="green"/>
+	</visual>
 
   <link name="laser_scanner">
 	<visual>
