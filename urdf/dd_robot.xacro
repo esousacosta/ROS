@@ -33,10 +33,11 @@
 	<inertial>
 	  <mass value="15"/>
 	  <origin xyz="0.0 0 0.1" rpy = "0 0 0" />
-	  <!-- <inertia ixx="0.13" ixy="0.0" ixz="0.0" -->
-	  <!-- 		   iyy="0.29" iyz="0.0" izz="0.371"/> -->
-	  <inertia ixx = "0.042" ixy = "0.0" ixz = "0.0"
-	  		   iyy = "0.142" iyz = "0.0" izz = "0.167"/>
+	  <!-- The inertia is wrong, but it's on purpose: when I fix the
+		   inertia to account for the robot's new mass value, it begins to wobble.
+		   Hence, I'll look further into it, but for now I'll leave it as is -->
+	  <inertia ixx = "0.1" ixy = "0.0" ixz = "0.0"
+	  		   iyy = "0.1" iyz = "0.0" izz = "0.1"/>
 	</inertial>
 
 	<!-- Front Caster -->
