@@ -31,7 +31,7 @@
 
 	<!-- Inertial properties of the chassis -->
 	<inertial>
-	  <mass value="10"/>
+	  <mass value="15"/>
 	  <origin xyz="0.0 0 0.1" rpy = "0 0 0" />
 	  <!-- <inertia ixx="0.13" ixy="0.0" ixz="0.0" -->
 	  <!-- 		   iyy="0.29" iyz="0.0" izz="0.371"/> -->
